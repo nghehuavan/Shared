@@ -1,0 +1,8 @@
+# onnxruntime: build ios XCODE + CMAKE + PYTHON
+
+python3 tools/ci_build/github/apple/build_and_assemble_apple_pods.py --build-settings-file tools/ci_build/github/apple/default_mobile_ios_framework_build_settings.json
+
+./build.sh --config Release --use_xcode -ios --apple_sysroot iphonesimulator --osx_arch x86_64 --apple_deploy_target 14 --build_apple_framework --skip_tests
+./build.sh --config Release --use_xcode -ios --apple_sysroot iphoneos --osx_arch arm64 --apple_deploy_target 14 --use_coreml --build_apple_framework --skip_tests
+
+# onnxruntime build android => use maven repository AAR file

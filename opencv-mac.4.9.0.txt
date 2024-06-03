@@ -1,0 +1,10 @@
+build from source
+
+  mkdir -p opencv-mac-4.9.0
+  cd opencv-mac-4.9.0
+  git clone https://github.com/opencv/opencv.git -b 4.9.0 opencv_source
+  mkdir -p build
+  cd build
+  cmake ../opencv_source -D CMAKE_INSTALL_PREFIX=/Users/Shared/native_c_sdk/opencv-mac-4.9.0
+  cmake --build . -j6 -DBUILD_TESTS=OFF
+  make install
