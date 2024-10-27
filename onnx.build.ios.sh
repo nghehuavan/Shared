@@ -1,0 +1,19 @@
+## Required python and cmake
+cd ~
+if [ -d "onnxruntime" ]
+then
+  echo "skiped clone onnxruntime"
+else
+  git clone --recursive https://github.com/microsoft/onnxruntime.git --branch v1.19.2
+fi
+
+cd onnxruntime
+git reset --hard
+git clean -d -f
+git clean -d -f -X
+
+python3 tools/ci_build/github/apple/build_and_assemble_apple_pods.py --build-settings-file tools/ci_build/github/apple/default_full_ios_framework_build_settings.json
+
+## Android https://mvnrepository.com/artifact/com.microsoft.onnxruntime/onnxruntime-android  -> aar -> unzip -> zip
+## Window https://github.com/microsoft/onnxruntime/releases -> onnxruntime-win-x64-1.19.2.zip -> unzip -> zip
+## Mac https://github.com/microsoft/onnxruntime/releases -> onnxruntime-osx-universal2-1.19.2.tgz -> unzip -> zip
